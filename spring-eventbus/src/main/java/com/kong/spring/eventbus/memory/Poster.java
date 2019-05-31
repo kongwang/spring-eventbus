@@ -15,8 +15,6 @@
  */
 package com.kong.spring.eventbus.memory;
 
-import com.kong.spring.eventbus.Subscription;
-
 /**
  * Posts events.
  *
@@ -24,11 +22,5 @@ import com.kong.spring.eventbus.Subscription;
  */
 interface Poster {
 
-    /**
-     * Enqueue an event to be posted for a particular subscription.
-     *
-     * @param subscription Subscription which will receive the event.
-     * @param event        Event that will be posted to subscribers.
-     */
-    void enqueue(Subscription subscription, Object event);
+    void enqueue(Object event);
 }

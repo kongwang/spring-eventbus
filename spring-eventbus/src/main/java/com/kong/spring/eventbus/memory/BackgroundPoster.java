@@ -39,8 +39,8 @@ final class BackgroundPoster implements Runnable, Poster {
     }
 
     @Override
-    public void enqueue(Subscription subscription, Object event) {
-        PendingPost pendingPost = PendingPost.obtainPendingPost(subscription, event);
+    public void enqueue(Object event) {
+        PendingPost pendingPost = PendingPost.obtainPendingPost(event);
         synchronized (this) {
             queue.enqueue(pendingPost);
             if (!executorRunning) {

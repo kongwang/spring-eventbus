@@ -27,23 +27,21 @@ final class PendingPost {
     Subscription subscription;
     PendingPost next;
 
-    private PendingPost(Object event, Subscription subscription) {
+    private PendingPost(Object event) {
         this.event = event;
-        this.subscription = subscription;
     }
 
-    static PendingPost obtainPendingPost(Subscription subscription, Object event) {
+    static PendingPost obtainPendingPost(Object event) {
         synchronized (pendingPostPool) {
             int size = pendingPostPool.size();
             if (size > 0) {
                 PendingPost pendingPost = pendingPostPool.remove(size - 1);
                 pendingPost.event = event;
-                pendingPost.subscription = subscription;
                 pendingPost.next = null;
                 return pendingPost;
             }
         }
-        return new PendingPost(event, subscription);
+        return new PendingPost(event);
     }
 
     static void releasePendingPost(PendingPost pendingPost) {

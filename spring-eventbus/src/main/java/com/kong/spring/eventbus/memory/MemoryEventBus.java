@@ -41,11 +41,7 @@ public class MemoryEventBus implements EventBus {
 
     @Override
     public void post(Object event) {
-        for (Class<?> subscriber : typesBySubscriber.keySet()) {
-            for (SubscriptionMethod method : typesBySubscriber.get(subscriber)) {
-                asyncPoster.enqueue(new Subscription(subscriber, method), event);
-            }
-        }
+        asyncPoster.enqueue(event);
     }
 
     void invokeSubscriber(Object event) {
