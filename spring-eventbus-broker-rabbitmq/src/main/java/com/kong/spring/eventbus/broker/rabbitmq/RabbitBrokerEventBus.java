@@ -1,7 +1,7 @@
-package com.kong.spring.eventbus.test.spring.broker.rabbitmq;
+package com.kong.spring.eventbus.broker.rabbitmq;
 
-import com.kong.spring.eventbus.test.EventBus;
-import com.kong.spring.eventbus.test.Subscription;
+import com.kong.spring.eventbus.EventBus;
+import com.kong.spring.eventbus.Subscription;
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
 import org.springframework.amqp.core.FanoutExchange;

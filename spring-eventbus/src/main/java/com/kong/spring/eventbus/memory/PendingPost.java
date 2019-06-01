@@ -13,9 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.kong.spring.eventbus.test.memory;
+package com.kong.spring.eventbus.memory;
 
-import com.kong.spring.eventbus.test.Subscription;
+import com.kong.spring.eventbus.Subscription;
 
 import java.util.ArrayList;
 import java.util.List;

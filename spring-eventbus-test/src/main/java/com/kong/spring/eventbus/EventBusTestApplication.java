@@ -1,7 +1,7 @@
-package com.kong.spring.eventbus.test;
+package com.kong.spring.eventbus;
 
-import com.kong.spring.eventbus.test.memory.MemoryEventBus;
-import com.kong.spring.eventbus.test.spring.broker.rabbitmq.RabbitBrokerEventBus;
+import com.kong.spring.eventbus.broker.rabbitmq.RabbitBrokerEventBus;
+import com.kong.spring.eventbus.memory.MemoryEventBus;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -19,13 +19,13 @@ public class EventBusTestApplication {
         SpringApplication.run(EventBusTestApplication.class, args);
     }
 
-//    @Bean
-//    public EventBus memoryEventBus() {
-//        return new MemoryEventBus();
-//    }
-
     @Bean
-    public EventBus rabbitBrokerEventBus() {
-        return new RabbitBrokerEventBus();
+    public EventBus memoryEventBus() {
+        return new MemoryEventBus();
     }
+
+//    @Bean
+//    public EventBus rabbitBrokerEventBus() {
+//        return new RabbitBrokerEventBus();
+//    }
 }

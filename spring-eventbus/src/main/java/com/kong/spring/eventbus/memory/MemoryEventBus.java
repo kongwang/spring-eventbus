@@ -1,9 +1,9 @@
-package com.kong.spring.eventbus.test.memory;
+package com.kong.spring.eventbus.memory;
 
-import com.kong.spring.eventbus.test.EventBus;
-import com.kong.spring.eventbus.test.EventBusException;
-import com.kong.spring.eventbus.test.Subscription;
-import com.kong.spring.eventbus.test.SubscriptionMethod;
+import com.kong.spring.eventbus.EventBus;
+import com.kong.spring.eventbus.EventBusException;
+import com.kong.spring.eventbus.Subscription;
+import com.kong.spring.eventbus.SubscriptionMethod;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;

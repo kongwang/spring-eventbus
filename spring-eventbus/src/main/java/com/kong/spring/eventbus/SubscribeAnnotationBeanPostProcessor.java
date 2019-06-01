@@ -1,4 +1,4 @@
-package com.kong.spring.eventbus.test;
+package com.kong.spring.eventbus;
 
 import org.springframework.aop.support.AopUtils;
 import org.springframework.beans.BeansException;

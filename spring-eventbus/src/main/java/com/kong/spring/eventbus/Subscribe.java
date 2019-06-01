@@ -1,4 +1,4 @@
-package com.kong.spring.eventbus.test;
+package com.kong.spring.eventbus;
 
 import java.lang.annotation.*;
 

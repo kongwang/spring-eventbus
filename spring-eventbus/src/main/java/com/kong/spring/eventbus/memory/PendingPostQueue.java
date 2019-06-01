@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.kong.spring.eventbus.test.memory;
+package com.kong.spring.eventbus.memory;
 
 final class PendingPostQueue {
     private PendingPost head;
