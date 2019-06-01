@@ -1,0 +1,6 @@
+spring:
+  rabbitmq:
+    host: 134.175.38.40
+    username: admin
+    password: admin
+    virtual-host: my_vhost

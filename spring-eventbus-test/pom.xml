@@ -9,8 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>spring-eventbus-broker-rabbitmq</artifactId>
-
+    <artifactId>spring-eventbus-test</artifactId>
     <dependencies>
         <dependency>
             <groupId>com.kong.spring.eventbus</groupId>
@@ -18,10 +17,12 @@
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-amqp</artifactId>
-            <version>2.1.5.RELEASE</version>
+            <groupId>com.kong.spring.eventbus</groupId>
+            <artifactId>spring-eventbus-broker-rabbitmq</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
+
 
 </project>
