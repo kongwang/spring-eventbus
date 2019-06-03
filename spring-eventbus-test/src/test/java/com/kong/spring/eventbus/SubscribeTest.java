@@ -1,5 +1,6 @@
 package com.kong.spring.eventbus;
 
+import org.junit.Assert;
 import org.springframework.stereotype.Component;
 
 /**
@@ -18,5 +19,11 @@ public class SubscribeTest {
     @Subscribe
     public void handleMessage2(String message) {
         System.out.println("message2 is  " + message);
+    }
+
+    @Subscribe
+    public void handleTestMessage(TestMessage testMessage) {
+        Assert.assertNotNull(testMessage);
+        System.out.println(testMessage.getName());
     }
 }

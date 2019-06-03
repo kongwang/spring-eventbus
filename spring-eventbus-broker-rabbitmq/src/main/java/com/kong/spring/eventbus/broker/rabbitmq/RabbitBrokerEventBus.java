@@ -12,6 +12,7 @@ import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.rabbit.listener.MethodRabbitListenerEndpoint;
 import org.springframework.amqp.rabbit.listener.RabbitListenerEndpointRegistrar;
 import org.springframework.amqp.rabbit.listener.RabbitListenerEndpointRegistry;
+import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.ListableBeanFactory;
@@ -62,12 +63,14 @@ public class RabbitBrokerEventBus implements EventBus, SmartInitializingSingleto
         endpoint.setId("org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#" + this.counter.getAndIncrement());
         endpoint.setQueueNames(resolveQueueName(subscription));
         endpoint.setBeanFactory(this.beanFactory);
+        endpoint.setMessageConverter(new Jackson2JsonMessageConverter());
         this.registrar.registerEndpoint(endpoint);
     }
 
     @Override
     public void post(Object event) {
         RabbitTemplate rabbitTemplate = this.beanFactory.getBean(RabbitTemplate.class);
+        rabbitTemplate.setMessageConverter(new Jackson2JsonMessageConverter());
         rabbitTemplate.convertAndSend(getExchangeName(event.getClass()), null, event);
     }
 

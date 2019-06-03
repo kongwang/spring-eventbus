@@ -19,13 +19,13 @@ public class EventBusTestApplication {
         SpringApplication.run(EventBusTestApplication.class, args);
     }
 
-    @Bean
-    public EventBus memoryEventBus() {
-        return new MemoryEventBus();
-    }
-
 //    @Bean
-//    public EventBus rabbitBrokerEventBus() {
-//        return new RabbitBrokerEventBus();
+//    public EventBus memoryEventBus() {
+//        return new MemoryEventBus();
 //    }
+
+    @Bean
+    public EventBus rabbitBrokerEventBus() {
+        return new RabbitBrokerEventBus();
+    }
 }

@@ -26,8 +26,12 @@ public class EventBusTest {
     }
 
     @Test
-    public void rabbitBrokerEventBusPostTest() {
-        eventBus.post("rabbit broker event bus , hello world");
+    public void rabbitBrokerEventBusPostTest() throws InterruptedException {
+        eventBus.post(new TestMessage("张三"));
+        //eventBus.post("rabbit broker event bus , hello world");
+
+        //Thread.sleep(1000);
     }
+
 
 }
