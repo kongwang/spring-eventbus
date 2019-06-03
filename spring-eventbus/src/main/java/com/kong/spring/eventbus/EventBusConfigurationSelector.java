@@ -4,7 +4,7 @@ import org.springframework.context.annotation.DeferredImportSelector;
 import org.springframework.core.type.AnnotationMetadata;
 
 /**
- * @auther:kong
+ * @author:kong
  * @date :2019/6/2
  * @descption:
  */

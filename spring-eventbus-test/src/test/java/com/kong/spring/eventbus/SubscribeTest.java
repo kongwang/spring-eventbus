@@ -4,7 +4,7 @@ import org.junit.Assert;
 import org.springframework.stereotype.Component;
 
 /**
- * @auther:kong
+ * @author:kong
  * @date :2019/6/2
  * @descption:
  */

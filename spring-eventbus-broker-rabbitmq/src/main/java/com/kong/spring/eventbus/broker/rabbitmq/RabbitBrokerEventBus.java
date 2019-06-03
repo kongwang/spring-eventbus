@@ -30,7 +30,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import static org.springframework.amqp.rabbit.annotation.RabbitListenerAnnotationBeanPostProcessor.DEFAULT_RABBIT_LISTENER_CONTAINER_FACTORY_BEAN_NAME;
 
 /**
- * @auther:kong
+ * @author kong wang
  * @date :2019/6/1
  * @descption:
  */
@@ -81,14 +81,15 @@ public class RabbitBrokerEventBus implements EventBus, SmartInitializingSingleto
 
     private String resolveQueueName(Subscription subscription) {
         String queueName = getQueueName(subscription);
-        Queue queue = new Queue(queueName);
-        queue.setShouldDeclare(true);
-        ((ConfigurableBeanFactory) this.beanFactory).registerSingleton(queueName + ++this.increment, queue);
-        declareExchangeAndBinding(subscription, queue);
+        declareQueueAndExchangeAndBinding(subscription, queueName);
         return queueName;
     }
 
-    private void declareExchangeAndBinding(Subscription subscription, Queue queue) {
+    private void declareQueueAndExchangeAndBinding(Subscription subscription, String queueName) {
+        Queue queue = new Queue(queueName);
+        queue.setShouldDeclare(true);
+        ((ConfigurableBeanFactory) this.beanFactory).registerSingleton(queueName + ++this.increment, queue);
+
         String exchangeName = getExchangeName(subscription.getSubscriptionMethod().getEventType());
         FanoutExchange exchange = new FanoutExchange(exchangeName);
         exchange.setShouldDeclare(true);
@@ -96,7 +97,7 @@ public class RabbitBrokerEventBus implements EventBus, SmartInitializingSingleto
 
         Binding binding = BindingBuilder.bind(queue).to(exchange);
         binding.setShouldDeclare(true);
-        ((ConfigurableBeanFactory) this.beanFactory).registerSingleton(exchangeName + "." + queue.getActualName(), binding);
+        ((ConfigurableBeanFactory) this.beanFactory).registerSingleton(exchangeName + "." + queueName, binding);
     }
 
     private String getQueueName(Subscription subscription) {
