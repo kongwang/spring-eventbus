@@ -48,7 +48,9 @@ public class MemoryEventBus implements EventBus {
         for (Class<?> subscriber : typesBySubscriber.keySet()) {
             for (SubscriptionMethod method : typesBySubscriber.get(subscriber)) {
                 try {
-                    method.getMethod().invoke(beanFactory.getBean(subscriber), event);
+                    if (method.getEventType().isAssignableFrom(event.getClass())) {
+                        method.getMethod().invoke(beanFactory.getBean(subscriber), event);
+                    }
                 } catch (InvocationTargetException e) {
                     throw new EventBusException("Invoking subscriber failed", e.getCause());
                 } catch (Exception e) {
